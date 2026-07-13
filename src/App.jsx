@@ -6,7 +6,7 @@ import './App.css'
 import { DayPicker } from 'react-day-picker'
 import 'react-day-picker/style.css'
 import { supabase } from './supabase'
-import emailjs from 'e@emailjs/browser'
+import emailjs from '@emailjs/browser'
 
 function App() {
   const[count, setCount] = useState(1);
@@ -58,7 +58,7 @@ async function handleSubmit() {
 
     await emailjs.send(
       "service_xokfees",
-      "template_0pwtstd",
+      "template_4atpopf",
       {
         customer_name: name,
         customer_phone: phone,
