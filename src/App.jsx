@@ -6,9 +6,10 @@ import './App.css'
 import { DayPicker } from 'react-day-picker'
 import 'react-day-picker/style.css'
 import { supabase } from './supabase'
+import emailjs from 'e@emailjs/browser'
 
 function App() {
-  const[count, setCount] = useState(1)
+  const[count, setCount] = useState(1);
   const[name, setName] = useState('');
   const[phone, setPhone] = useState('');
   const[email, setEmail] = useState('');
@@ -54,6 +55,20 @@ async function handleSubmit() {
       alert(error.message);
       return;
     }
+
+    await emailjs.send(
+      "service_xokfees",
+      "template_0pwtstd",
+      {
+        customer_name: name,
+        customer_phone: phone,
+        customer_email: email,
+        dozen_count: count,
+        pickup_date: selectedDate.toISOString().split("T")[0],
+        pickup_time: selectedTime,
+      },
+      "tmnLQT3k5nWRv7Ps9"
+    );
 
     console.log("4. Success!");
     alert("Order placed successfully!");
